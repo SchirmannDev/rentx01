@@ -10,7 +10,11 @@ const Routes = () => {
   return (
     <Navigator initialRouteName="Home">
       <Screen options={{ headerShown: true }} name="Home" component={Home} />
-      <Screen options={{ headerShown: true }} name="CardDetail" component={CarDetail} />
+      <Screen
+        options={{ headerShown: true }}
+        name="CardDetail"
+        component={CarDetail}
+      />
     </Navigator>
   );
 };

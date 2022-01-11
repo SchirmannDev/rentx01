@@ -5,13 +5,13 @@ import { ThemeProvider } from 'styled-components/native';
 
 import theme from './styles/theme';
 
-import { Home } from './screens';
+import { CarDetail } from './screens';
 
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <NavigationContainer>
-        <Home />
+        <CarDetail />
       </NavigationContainer>
     </ThemeProvider>
   );

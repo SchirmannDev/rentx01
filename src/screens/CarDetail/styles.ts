@@ -8,4 +8,8 @@ export const Header = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-top: 18px;
+  margin-left: 24px;
 `;
+
+export const CarImages = styled.View``;

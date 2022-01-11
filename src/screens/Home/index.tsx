@@ -8,13 +8,7 @@ import * as S from './styles';
 import { Logo } from '../../assets';
 import { CardCar } from '../../components';
 
-
-
-
-
-
 const Home = () => {
-
   const carData = {
     brand: 'AUDI',
     name: 'RS 5 Coupé',
@@ -22,8 +16,8 @@ const Home = () => {
       period: 'AO DIA',
       price: 120,
     },
-    thumbnail: 'https://img1.gratispng.com/20171220/kiq/audi-png-car-image-5a3b1f1eb47de9.9104985015138240307393.jpg'
-  }
+    thumbnail: 'https://freepngimg.com/thumb/audi/35227-5-audi-rs5-red.png',
+  };
   return (
     <S.Container>
       <StatusBar barStyle="light-content" />
@@ -32,8 +26,6 @@ const Home = () => {
           <Logo width={RFValue(108)} height={RFValue(12)} />
           <S.TotalCars>Total de 12 carros</S.TotalCars>
         </S.HeaderContent>
-
-
       </S.Header>
 
       <S.CarList
@@ -41,7 +33,6 @@ const Home = () => {
         keyExtractor={item => String(item)}
         renderItem={({ item }) => <CardCar data={carData} />}
       />
-
     </S.Container>
   );
 };

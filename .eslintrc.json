@@ -35,6 +35,7 @@
     "no-console": "off",
     "no-shadow": "off",
     "camelcase": "off",
+    "eslint no-unneeded-ternary": "off",
     "no-unused-expressions": "off",
     "no-use-before-define": "off",
     "import/prefer-default-export": "off",

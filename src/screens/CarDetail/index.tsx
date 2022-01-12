@@ -2,7 +2,15 @@ import React from 'react';
 
 import * as S from './styles';
 
-import { BackButton, ImageSlider } from '../../components';
+import {
+  Speed,
+  Acceleration,
+  Force,
+  Gasoline,
+  Exchange,
+  People,
+} from '../../assets';
+import { BackButton, ImageSlider, Acessory, Button } from '../../components';
 
 const CarDetail = () => {
   return (
@@ -17,6 +25,37 @@ const CarDetail = () => {
           ]}
         />
       </S.CarImages>
+      <S.Content>
+        <S.Details>
+          <S.Description>
+            <S.Brand>Lambhorguini</S.Brand>
+            <S.Name>Huracan</S.Name>
+          </S.Description>
+
+          <S.Rent>
+            <S.Period>Ao dia</S.Period>
+            <S.Price>R$580,00</S.Price>
+          </S.Rent>
+        </S.Details>
+
+        <S.Acessorys>
+          <Acessory name="380km/h" icon={Speed} />
+          <Acessory name="3.2s" icon={Acceleration} />
+          <Acessory name="800 HP" icon={Force} />
+          <Acessory name="Gasolina" icon={Gasoline} />
+          <Acessory name="Auto" icon={Exchange} />
+          <Acessory name="2 pessoas" icon={People} />
+        </S.Acessorys>
+
+        <S.About>
+          Este é um automóvel desportivo. Surgiu o lendário touro de lide
+          induldado na praça Real Maestranza de Sevilla. É um bélissimo carro
+          para quem gosta de acelerar.
+        </S.About>
+      </S.Content>
+      <S.Footer>
+        <Button title="CONFIRMAR" color="" />
+      </S.Footer>
     </S.Container>
   );
 };

@@ -10,6 +10,6 @@ export { default as Gasoline } from './svg/gasoline';
 export { default as Home } from './svg/home';
 export { default as Hybrid } from './svg/hybrid';
 export { default as Logo } from './svg/logo';
-export { default as Logo_background } from './svg/logo_background';
+export { default as LogoB } from './svg/logob';
 export { default as People } from './svg/people';
 export { default as Speed } from './svg/speed';

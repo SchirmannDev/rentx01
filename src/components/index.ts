@@ -4,3 +4,4 @@ export { default as ImageSlider } from './ImageSlider';
 export { default as Acessory } from './Acessory';
 export { default as Button } from './Button';
 export { default as Calendary } from './Calendary ';
+export { default as ConfirmButton } from './ConfirmButton';

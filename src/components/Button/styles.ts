@@ -1,14 +1,18 @@
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, TouchableOpacityProps } from 'react-native';
 
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 
-export const Container = styled(TouchableOpacity)`
+interface ButtonProps extends TouchableOpacityProps {
+  color: string;
+}
+
+export const Container = styled(TouchableOpacity)<ButtonProps>`
   width: 100%;
   align-items: center;
   justify-content: center;
 
-  background-color: ${({ theme }) => theme.colors.main};
+  background-color: ${({ color }) => color};
   border-radius: 15px;
   padding: 19px;
 `;

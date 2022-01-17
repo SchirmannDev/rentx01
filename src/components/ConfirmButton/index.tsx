@@ -5,11 +5,12 @@ import * as S from './styles';
 
 interface Props extends TouchableOpacityProps {
   title: string;
+  onPress: () => void;
 }
 
-const ConfirmButton = ({ title, ...rest }: Props) => {
+const ConfirmButton = ({ title, onPress }: Props) => {
   return (
-    <S.Container>
+    <S.Container onPress={onPress}>
       <S.Title>{title}</S.Title>
     </S.Container>
   );

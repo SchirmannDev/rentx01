@@ -1,11 +1,12 @@
 import { Dimensions } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 
 const { width, height } = Dimensions.get('window');
 
-export const Container = styled.View`
+export const Container = styled(TouchableOpacity)`
   width: 100%;
   height: 126px;
   background-color: ${({ theme }) => theme.colors.secondary};

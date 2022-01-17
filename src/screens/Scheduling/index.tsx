@@ -1,15 +1,30 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
 
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTheme } from 'styled-components';
 
 import * as S from './styles';
 
 import { Arrow } from '../../assets';
 import { BackButton, Button, Calendary } from '../../components';
+import { RouteTypesProps } from '../../routes/app.routes';
 
 const Scheduling = () => {
   const theme = useTheme();
+
+  type RouteType = NativeStackNavigationProp<
+    RouteTypesProps,
+    'SchedulingDetails'
+  >;
+
+  const { navigate } = useNavigation<RouteType>();
+
+  function handleConfirmRental() {
+    navigate('SchedulingDetails');
+  }
+
   return (
     <S.Container>
       <S.Header>
@@ -46,7 +61,11 @@ const Scheduling = () => {
       </S.Content>
 
       <S.Footer>
-        <Button title="CONFIRMAR" />
+        <Button
+          title="CONFIRMAR"
+          color=""
+          onPress={() => handleConfirmRental()}
+        />
       </S.Footer>
     </S.Container>
   );

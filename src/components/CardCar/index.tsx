@@ -1,4 +1,5 @@
 import React from 'react';
+import { TouchableOpacityProps } from 'react-native';
 
 import * as S from './styles';
 
@@ -14,13 +15,13 @@ interface CarData {
   thumbnail: string;
 }
 
-interface Props {
+interface Props extends TouchableOpacityProps {
   data: CarData;
 }
 
-const CardCar = ({ data }: Props) => {
+const CardCar = ({ data, ...rest }: Props) => {
   return (
-    <S.Container>
+    <S.Container {...rest}>
       <S.Details>
         <S.Brand>{data.name}</S.Brand>
         <S.Name>{data.name}</S.Name>

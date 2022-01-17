@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+
 import * as S from './styles';
 
 import {
@@ -11,8 +14,16 @@ import {
   People,
 } from '../../assets';
 import { BackButton, ImageSlider, Acessory, Button } from '../../components';
+import { RouteTypesProps } from '../../routes/app.routes';
 
 const CarDetail = () => {
+  type RouteType = NativeStackNavigationProp<RouteTypesProps, 'Scheduling'>;
+
+  const { navigate } = useNavigation<RouteType>();
+
+  function handleConfirmRental() {
+    navigate('Scheduling');
+  }
   return (
     <S.Container>
       <S.Header>
@@ -28,8 +39,8 @@ const CarDetail = () => {
       <S.Content>
         <S.Details>
           <S.Description>
-            <S.Brand>Lambhorguini</S.Brand>
-            <S.Name>Huracan</S.Name>
+            <S.Brand>AUDI</S.Brand>
+            <S.Name>RS 5 Coupé</S.Name>
           </S.Description>
 
           <S.Rent>
@@ -54,7 +65,11 @@ const CarDetail = () => {
         </S.About>
       </S.Content>
       <S.Footer>
-        <Button title="CONFIRMAR" color="" />
+        <Button
+          title="Escolher periodo do aluguel"
+          color=""
+          onPress={() => handleConfirmRental()}
+        />
       </S.Footer>
     </S.Container>
   );

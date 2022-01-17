@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import Feather from 'react-native-vector-icons/Feather';
 import { useTheme } from 'styled-components';
 
@@ -14,9 +16,22 @@ import {
   People,
 } from '../../assets';
 import { BackButton, ImageSlider, Acessory, Button } from '../../components';
+import { RouteTypesProps } from '../../routes/app.routes';
 
 const SchedulingDetails = () => {
   const theme = useTheme();
+
+  type RouteType = NativeStackNavigationProp<
+    RouteTypesProps,
+    'SchedulingComplete'
+  >;
+
+  const { navigate } = useNavigation<RouteType>();
+
+  function handleConfirmRental() {
+    navigate('SchedulingComplete');
+  }
+
   return (
     <S.Container>
       <S.Header>
@@ -76,7 +91,11 @@ const SchedulingDetails = () => {
         </S.RentalPrice>
       </S.Content>
       <S.Footer>
-        <Button title="CONFIRMAR" color="" />
+        <Button
+          title="ALUGAR AGORA"
+          color={theme.colors.success}
+          onPress={() => handleConfirmRental()}
+        />
       </S.Footer>
     </S.Container>
   );

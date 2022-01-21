@@ -17,6 +17,7 @@ import { BackButton, ImageSlider, Acessory, Button } from '../../components';
 import { RouteTypesProps } from '../../routes/app.routes';
 
 const CarDetail = () => {
+  const navigation = useNavigation();
   type RouteType = NativeStackNavigationProp<RouteTypesProps, 'Scheduling'>;
 
   const { navigate } = useNavigation<RouteType>();
@@ -24,10 +25,14 @@ const CarDetail = () => {
   function handleConfirmRental() {
     navigate('Scheduling');
   }
+
+  function handleBack() {
+    navigation.goBack();
+  }
   return (
     <S.Container>
       <S.Header>
-        <BackButton onPress={() => console.log('oi')} />
+        <BackButton onPress={() => handleBack()} />
       </S.Header>
       <S.CarImages>
         <ImageSlider

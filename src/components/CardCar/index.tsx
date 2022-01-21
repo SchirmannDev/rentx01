@@ -4,19 +4,10 @@ import { TouchableOpacityProps } from 'react-native';
 import * as S from './styles';
 
 import { Gasoline } from '../../assets';
-
-interface CarData {
-  brand: string;
-  name: string;
-  rent: {
-    period: string;
-    price: number;
-  };
-  thumbnail: string;
-}
+import { carDTO } from '../../dtos/carDTO';
 
 interface Props extends TouchableOpacityProps {
-  data: CarData;
+  data: carDTO;
 }
 
 const CardCar = ({ data, ...rest }: Props) => {

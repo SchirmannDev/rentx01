@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
@@ -8,10 +8,15 @@ import { RFValue } from 'react-native-responsive-fontsize';
 import * as S from './styles';
 
 import { Logo } from '../../assets';
-import { CardCar } from '../../components';
+import { CardCar, Load } from '../../components';
+import { carDTO } from '../../dtos/carDTO';
 import { RouteTypesProps } from '../../routes/app.routes';
+import api from '../../services/api';
 
 const Home = () => {
+  const [cars, setCars] = useState<carDTO[]>([]);
+  const [loading, setLoading] = useState(true);
+
   type RouteType = NativeStackNavigationProp<RouteTypesProps, 'CardDetail'>;
 
   const { navigate } = useNavigation<RouteType>();
@@ -30,6 +35,20 @@ const Home = () => {
     navigate('CardDetail');
   }
 
+  useEffect(() => {
+    async function fetchCars() {
+      try {
+        const response = await api.get('/cars');
+        setCars(response.data);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchCars();
+  }, []);
+
   return (
     <S.Container>
       <StatusBar barStyle="light-content" />
@@ -39,14 +58,17 @@ const Home = () => {
           <S.TotalCars>Total de 12 carros</S.TotalCars>
         </S.HeaderContent>
       </S.Header>
-
-      <S.CarList
-        data={[1, 2, 3]}
-        keyExtractor={item => String(item)}
-        renderItem={({ item }) => (
-          <CardCar data={carData} onPress={() => handleCarDetails()} />
-        )}
-      />
+      {loading ? (
+        <Load />
+      ) : (
+        <S.CarList
+          data={cars}
+          keyExtractor={item => item.id}
+          renderItem={({ item }) => (
+            <CardCar data={item} onPress={() => handleCarDetails()} />
+          )}
+        />
+      )}
     </S.Container>
   );
 };

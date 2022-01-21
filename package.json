@@ -15,11 +15,13 @@
     "clean:ios": "rm -rf ios/build && rm -rf ios/Pods && rm -rf ios/Podfile.lock",
     "build": "yarn && yarn build:android && yarn build:ios",
     "build:android": "npx jetifier",
-    "build:ios": "cd ios/ && pod install"
+    "build:ios": "cd ios/ && pod install",
+    "api": "json-server ./src/services/server.json --host 192.168.0.114 --port 3333 --delay 700"
   },
   "dependencies": {
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
+    "json-server": "^0.17.0",
     "react": "17.0.2",
     "react-native": "0.66.4",
     "react-native-calendars": "^1.1275.0",
@@ -29,7 +31,8 @@
     "react-native-screens": "^3.10.1",
     "react-native-svg": "^12.1.1",
     "react-native-vector-icons": "^9.0.0",
-    "styled-components": "^5.3.3"
+    "styled-components": "^5.3.3",
+    "axios": "^0.25.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

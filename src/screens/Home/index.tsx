@@ -21,18 +21,8 @@ const Home = () => {
 
   const { navigate } = useNavigation<RouteType>();
 
-  const carData = {
-    brand: 'AUDI',
-    name: 'RS 5 Coupé',
-    rent: {
-      period: 'AO DIA',
-      price: 120,
-    },
-    thumbnail: 'https://freepngimg.com/thumb/audi/35227-5-audi-rs5-red.png',
-  };
-
-  function handleCarDetails() {
-    navigate('CardDetail');
+  function handleCarDetails(car: carDTO) {
+    navigate('CardDetail', { car });
   }
 
   useEffect(() => {
@@ -65,7 +55,7 @@ const Home = () => {
           data={cars}
           keyExtractor={item => item.id}
           renderItem={({ item }) => (
-            <CardCar data={item} onPress={() => handleCarDetails()} />
+            <CardCar data={item} onPress={() => handleCarDetails(item)} />
           )}
         />
       )}

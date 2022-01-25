@@ -1,4 +1,5 @@
 import React from 'react';
+import { StatusBar } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -20,6 +21,7 @@ import { RouteTypesProps } from '../../routes/app.routes';
 
 const SchedulingDetails = () => {
   const theme = useTheme();
+  const navigation = useNavigation();
 
   type RouteType = NativeStackNavigationProp<
     RouteTypesProps,
@@ -32,10 +34,15 @@ const SchedulingDetails = () => {
     navigate('SchedulingComplete');
   }
 
+  function handleBack() {
+    navigation.goBack();
+  }
+
   return (
     <S.Container>
+      <StatusBar barStyle="light-content" />
       <S.Header>
-        <BackButton onPress={() => console.log('oi')} />
+        <BackButton onPress={() => handleBack()} />
       </S.Header>
       <S.CarImages>
         <ImageSlider

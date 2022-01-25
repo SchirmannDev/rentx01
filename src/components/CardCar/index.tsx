@@ -1,18 +1,21 @@
 import React from 'react';
 import { TouchableOpacityProps } from 'react-native';
+import { StatusBar } from 'react-native';
 
 import * as S from './styles';
 
-import { Gasoline } from '../../assets';
 import { carDTO } from '../../dtos/carDTO';
+import { getAccessoryIcon } from '../../utils/getAccessory';
 
 interface Props extends TouchableOpacityProps {
   data: carDTO;
 }
 
 const CardCar = ({ data, ...rest }: Props) => {
+  const MotorIcon = getAccessoryIcon(data.fuel_type);
   return (
     <S.Container {...rest}>
+      <StatusBar barStyle="light-content" />
       <S.Details>
         <S.Brand>{data.name}</S.Brand>
         <S.Name>{data.name}</S.Name>
@@ -23,7 +26,7 @@ const CardCar = ({ data, ...rest }: Props) => {
             <S.Price>{`R$ ${data.rent.price}`}</S.Price>
           </S.Rent>
           <S.Type>
-            <Gasoline />
+            <MotorIcon />
           </S.Type>
         </S.About>
       </S.Details>

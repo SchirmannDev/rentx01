@@ -23,7 +23,9 @@ const CarDetail = () => {
   const { navigate } = useNavigation<RouteType>();
 
   function handleConfirmRental() {
-    navigate('Scheduling');
+    navigate('Scheduling', {
+      car
+    });
   }
 
   function handleBack() {
@@ -46,7 +48,7 @@ const CarDetail = () => {
 
           <S.Rent>
             <S.Period>{car.rent.period}</S.Period>
-            <S.Price>R$ {car.rent.price}</S.Price>
+            <S.Price>R$ {car.rent.price},00</S.Price>
           </S.Rent>
         </S.Details>
 

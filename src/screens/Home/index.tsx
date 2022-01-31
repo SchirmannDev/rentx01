@@ -4,6 +4,8 @@ import { StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RFValue } from 'react-native-responsive-fontsize';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useTheme } from 'styled-components';
 
 import * as S from './styles';
 
@@ -16,7 +18,7 @@ import api from '../../services/api';
 const Home = () => {
   const [cars, setCars] = useState<carDTO[]>([]);
   const [loading, setLoading] = useState(true);
-
+  const theme = useTheme();
   type RouteType = NativeStackNavigationProp<RouteTypesProps, 'CardDetail'>;
 
   const { navigate } = useNavigation<RouteType>();
@@ -59,6 +61,10 @@ const Home = () => {
           )}
         />
       )}
+      <S.MyCarsButton>
+        <Ionicons name="ios-car-sport" size={32} color={theme.colors.shape} />
+      </S.MyCarsButton>
+
     </S.Container>
   );
 };

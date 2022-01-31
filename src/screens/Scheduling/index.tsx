@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { Alert, StatusBar } from 'react-native';
 
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { format } from 'date-fns';
 import { useTheme } from 'styled-components';
@@ -12,17 +13,25 @@ import { BackButton, Button, Calendary } from '../../components';
 import { MarkedDatesProps } from '../../components/Calendary ';
 import { DayProps } from '../../components/Calendary ';
 import { generateInterval } from '../../components/Calendary /generateInterval';
+import { carDTO } from '../../dtos/carDTO';
 import { RouteTypesProps } from '../../routes/app.routes';
 import { getPlatformDate } from '../../utils/getPlatformDate';
 
 interface RentalPeriod {
-  start: number;
+
   startFormatted: string;
-  end: number;
+
   endFormatted: string;
 }
 
+interface Params {
+  car: carDTO;
+}
+
 const Scheduling = () => {
+
+  const route = useRoute();
+  const { car } = route.params as Params;
   const [lastSelectedDate, setLastSelectedDate] = useState<DayProps>(
     {} as DayProps,
   );
@@ -45,7 +54,14 @@ const Scheduling = () => {
   const { navigate } = useNavigation<RouteType>();
 
   function handleConfirmRental() {
-    navigate('SchedulingDetails');
+    if (!rentalPeriod.startFormatted || !rentalPeriod.endFormatted) {
+      Alert.alert("Selecione o intervalo para alugar.")
+    } else {
+      navigate('SchedulingDetails', {
+        car,
+        dates: Object.keys(markedDates)
+      });
+    }
   }
 
   function handleBack() {
@@ -68,8 +84,7 @@ const Scheduling = () => {
     const endDate = Object.keys(interval)[Object.keys(interval).length - 1];
 
     setRentalPeriod({
-      start: start.timestamp,
-      end: end.timestamp,
+
       startFormatted: format(
         getPlatformDate(new Date(firstDate)),
         'dd/MM/yyyy',
@@ -80,7 +95,9 @@ const Scheduling = () => {
 
   return (
     <S.Container>
+      <StatusBar barStyle="light-content" />
       <S.Header>
+
         <BackButton onPress={() => handleBack()} color={theme.colors.shape} />
         <S.Title>
           Escolha uma {'\n'}
@@ -108,7 +125,7 @@ const Scheduling = () => {
       <S.Content>
         <Calendary
           markedDates={markedDates}
-          onDayPress={() => handleChangeDate}
+          onDayPress={handleChangeDate}
         />
       </S.Content>
 

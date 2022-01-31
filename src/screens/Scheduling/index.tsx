@@ -125,7 +125,7 @@ const Scheduling = () => {
       <S.Content>
         <Calendary
           markedDates={markedDates}
-          onDayPress={handleChangeDate}
+          onDayPress={() => handleChangeDate}
         />
       </S.Content>
 

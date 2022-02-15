@@ -68,7 +68,6 @@ const Home = () => {
       <S.MyCarsButton onPress={() => handleOpenMyCars()}>
         <Ionicons name="ios-car-sport" size={32} color={theme.colors.shape} />
       </S.MyCarsButton>
-
     </S.Container>
   );
 };

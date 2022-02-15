@@ -13,16 +13,13 @@ import Load from '../../components/Load';
 import { carDTO } from '../../dtos/carDTO';
 import api from '../../services/api';
 
-
 interface CarProps {
   id: string;
   user_id: string;
   car: carDTO;
   startDate: string;
   endDate: string;
-
 }
-
 
 const MyCars = () => {
   const [cars, setCars] = useState<CarProps[]>([]);
@@ -30,11 +27,9 @@ const MyCars = () => {
   const theme = useTheme();
   const navigate = useNavigation();
 
-
   function handleBack() {
-    navigate.goBack()
+    navigate.goBack();
   }
-
 
   useEffect(() => {
     async function fetchCars() {
@@ -42,30 +37,28 @@ const MyCars = () => {
         const response = await api.get('/schedules_byuser?user_id=1');
         setCars(response.data);
       } catch (error) {
-        console.log(error)
+        console.log(error);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
     }
-    fetchCars()
-  }, [])
+    fetchCars();
+  }, []);
 
   return (
     <S.Container>
       <StatusBar barStyle="light-content" />
       <S.Header>
-
         <BackButton onPress={() => handleBack()} color={theme.colors.shape} />
         <S.Title>
           Seus agendamentos, {'\n'}
           estão aqui.
         </S.Title>
-        <S.SubTitle>
-          Conforto, segurança e praticidade
-        </S.SubTitle>
-
+        <S.SubTitle>Conforto, segurança e praticidade</S.SubTitle>
       </S.Header>
-      {loading ? <Load /> : (
+      {loading ? (
+        <Load />
+      ) : (
         <S.Content>
           <S.Appointments>
             <S.AppointmentsTitle>Agendamentos feitos</S.AppointmentsTitle>
@@ -99,8 +92,7 @@ const MyCars = () => {
         </S.Content>
       )}
     </S.Container>
-  )
-}
-
+  );
+};
 
 export default MyCars;

@@ -11,11 +11,15 @@ interface Props extends TouchableOpacityProps {
   onPress: () => void;
   enabled?: boolean;
   loading?: boolean;
-
-
 }
 
-const Button = ({ title, color, onPress, enabled = true, loading = false }: Props) => {
+const Button = ({
+  title,
+  color,
+  onPress,
+  enabled = true,
+  loading = false,
+}: Props) => {
   const theme = useTheme();
   return (
     <S.Container
@@ -23,14 +27,13 @@ const Button = ({ title, color, onPress, enabled = true, loading = false }: Prop
       onPress={onPress}
       enabled={enabled}
       loading={loading}
-      style={{ opacity: (enabled === false || loading === true) ? .5 : 1 }}
-
+      style={{ opacity: enabled === false || loading === true ? 0.5 : 1 }}
     >
-      {loading
-
-        ? <ActivityIndicator color={theme.colors.shape} />
-        : <S.Title>{title}</S.Title>
-      }
+      {loading ? (
+        <ActivityIndicator color={theme.colors.shape} />
+      ) : (
+        <S.Title>{title}</S.Title>
+      )}
     </S.Container>
   );
 };

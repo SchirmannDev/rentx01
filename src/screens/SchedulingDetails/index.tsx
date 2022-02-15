@@ -7,15 +7,13 @@ import { format } from 'date-fns';
 import Feather from 'react-native-vector-icons/Feather';
 import { useTheme } from 'styled-components';
 
-
-
 import * as S from './styles';
 
 import { BackButton, ImageSlider, Acessory, Button } from '../../components';
 import { carDTO } from '../../dtos/carDTO';
 import { RouteTypesProps } from '../../routes/app.routes';
 import api from '../../services/api';
-import { getAccessoryIcon } from '../../utils/getAccessory'
+import { getAccessoryIcon } from '../../utils/getAccessory';
 import { getPlatformDate } from '../../utils/getPlatformDate';
 
 interface Params {
@@ -29,8 +27,9 @@ interface RentalPeriod {
 }
 
 const SchedulingDetails = () => {
-
-  const [rentalPeriod, setRentalPeriod] = useState<RentalPeriod>({} as RentalPeriod);
+  const [rentalPeriod, setRentalPeriod] = useState<RentalPeriod>(
+    {} as RentalPeriod,
+  );
 
   const theme = useTheme();
   const navigation = useNavigation();
@@ -51,24 +50,26 @@ const SchedulingDetails = () => {
 
     const unavailable_dates = [
       ...schedulesByCar.data.unavailable_dates,
-      ...dates
+      ...dates,
     ];
 
     await api.post('schedules_byuser', {
       user_id: 1,
       car,
       startDate: format(getPlatformDate(new Date(dates[0])), 'dd/MM/yyyy'),
-      endDate: format(getPlatformDate(new Date(dates[dates.length - 1])), 'dd/MM/yyyy')
-    })
+      endDate: format(
+        getPlatformDate(new Date(dates[dates.length - 1])),
+        'dd/MM/yyyy',
+      ),
+    });
 
-    api.put(`/schedules_bycars/${car.id}`, {
-      id: car.id,
-      unavailable_dates
-    })
+    api
+      .put(`/schedules_bycars/${car.id}`, {
+        id: car.id,
+        unavailable_dates,
+      })
       .then(() => navigate('SchedulingComplete'))
-      .catch(() => Alert.alert('Não foi possivel confirmar o agendamento'))
-
-
+      .catch(() => Alert.alert('Não foi possivel confirmar o agendamento'));
   }
 
   function handleBack() {
@@ -78,13 +79,13 @@ const SchedulingDetails = () => {
   useEffect(() => {
     setRentalPeriod({
       start: format(getPlatformDate(new Date(dates[0])), 'dd/MM/yyyy'),
-      end: format(getPlatformDate(new Date(dates[dates.length - 1])), 'dd/MM/yyyy')
-    })
+      end: format(
+        getPlatformDate(new Date(dates[dates.length - 1])),
+        'dd/MM/yyyy',
+      ),
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []
-  )
-
-
+  }, []);
 
   return (
     <S.Container>
@@ -93,9 +94,7 @@ const SchedulingDetails = () => {
         <BackButton onPress={() => handleBack()} />
       </S.Header>
       <S.CarImages>
-        <ImageSlider
-          imagesUrl={car.photos}
-        />
+        <ImageSlider imagesUrl={car.photos} />
       </S.CarImages>
       <S.Content>
         <S.Details>
@@ -111,17 +110,13 @@ const SchedulingDetails = () => {
         </S.Details>
 
         <S.Acessorys>
-          {
-            car.accessories.map(accessory => (
-              <Acessory
-                key={accessory.type}
-                name={accessory.name}
-                icon={getAccessoryIcon(accessory.type)}
-              />
-            )
-            )
-
-          }
+          {car.accessories.map(accessory => (
+            <Acessory
+              key={accessory.type}
+              name={accessory.name}
+              icon={getAccessoryIcon(accessory.type)}
+            />
+          ))}
         </S.Acessorys>
 
         <S.RentalPeriod>

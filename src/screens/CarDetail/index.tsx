@@ -24,7 +24,7 @@ const CarDetail = () => {
 
   function handleConfirmRental() {
     navigate('Scheduling', {
-      car
+      car,
     });
   }
 

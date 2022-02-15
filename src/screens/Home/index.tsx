@@ -27,6 +27,10 @@ const Home = () => {
     navigate('CardDetail', { car });
   }
 
+  function handleOpenMyCars() {
+    navigate('MyCars');
+  }
+
   useEffect(() => {
     async function fetchCars() {
       try {
@@ -61,10 +65,9 @@ const Home = () => {
           )}
         />
       )}
-      <S.MyCarsButton>
+      <S.MyCarsButton onPress={() => handleOpenMyCars()}>
         <Ionicons name="ios-car-sport" size={32} color={theme.colors.shape} />
       </S.MyCarsButton>
-
     </S.Container>
   );
 };

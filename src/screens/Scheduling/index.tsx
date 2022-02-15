@@ -18,7 +18,6 @@ import { RouteTypesProps } from '../../routes/app.routes';
 import { getPlatformDate } from '../../utils/getPlatformDate';
 
 interface RentalPeriod {
-
   startFormatted: string;
 
   endFormatted: string;
@@ -29,7 +28,6 @@ interface Params {
 }
 
 const Scheduling = () => {
-
   const route = useRoute();
   const { car } = route.params as Params;
   const [lastSelectedDate, setLastSelectedDate] = useState<DayProps>(
@@ -55,11 +53,11 @@ const Scheduling = () => {
 
   function handleConfirmRental() {
     if (!rentalPeriod.startFormatted || !rentalPeriod.endFormatted) {
-      Alert.alert("Selecione o intervalo para alugar.")
+      Alert.alert('Selecione o intervalo para alugar.');
     } else {
       navigate('SchedulingDetails', {
         car,
-        dates: Object.keys(markedDates)
+        dates: Object.keys(markedDates),
       });
     }
   }
@@ -84,7 +82,6 @@ const Scheduling = () => {
     const endDate = Object.keys(interval)[Object.keys(interval).length - 1];
 
     setRentalPeriod({
-
       startFormatted: format(
         getPlatformDate(new Date(firstDate)),
         'dd/MM/yyyy',
@@ -97,7 +94,6 @@ const Scheduling = () => {
     <S.Container>
       <StatusBar barStyle="light-content" />
       <S.Header>
-
         <BackButton onPress={() => handleBack()} color={theme.colors.shape} />
         <S.Title>
           Escolha uma {'\n'}
@@ -125,7 +121,9 @@ const Scheduling = () => {
       <S.Content>
         <Calendary
           markedDates={markedDates}
-          onDayPress={() => handleChangeDate}
+          onDayPress={handleChangeDate()}
+          enabled={!!rentalPeriod.startFormatted}
+          loading
         />
       </S.Content>
 

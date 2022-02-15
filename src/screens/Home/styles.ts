@@ -47,6 +47,6 @@ export const MyCarsButton = styled(TouchableOpacity)`
   align-items: center;
   justify-content: center;
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 13px;
+  right: 22px;
 `;

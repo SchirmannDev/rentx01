@@ -8,6 +8,7 @@ import {
   Scheduling,
   SchedulingDetails,
   SchedulingComplete,
+  MyCars,
 } from '../screens';
 
 type RouteTypesProps = {
@@ -16,6 +17,7 @@ type RouteTypesProps = {
   SchedulingDetails: any;
   SchedulingComplete: any;
   CardDetail: any;
+  MyCars: any;
 };
 
 const { Navigator, Screen } = createNativeStackNavigator<RouteTypesProps>();
@@ -43,6 +45,12 @@ const Routes = () => {
         options={{ headerShown: false }}
         name="SchedulingComplete"
         component={SchedulingComplete}
+      />
+
+      <Screen
+        options={{ headerShown: false }}
+        name="MyCars"
+        component={MyCars}
       />
     </Navigator>
   );

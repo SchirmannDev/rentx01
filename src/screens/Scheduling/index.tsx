@@ -121,7 +121,7 @@ const Scheduling = () => {
       <S.Content>
         <Calendary
           markedDates={markedDates}
-          onDayPress={handleChangeDate()}
+          onDayPress={handleChangeDate}
           enabled={!!rentalPeriod.startFormatted}
           loading
         />
@@ -131,7 +131,7 @@ const Scheduling = () => {
         <Button
           title="CONFIRMAR"
           color=""
-          onPress={() => handleConfirmRental()}
+          onPress={handleConfirmRental}
         />
       </S.Footer>
     </S.Container>
@@ -139,3 +139,4 @@ const Scheduling = () => {
 };
 
 export default Scheduling;
+

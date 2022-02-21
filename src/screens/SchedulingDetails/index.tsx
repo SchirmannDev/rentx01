@@ -147,7 +147,7 @@ const SchedulingDetails = () => {
         <Button
           title="ALUGAR AGORA"
           color={theme.colors.success}
-          onPress={() => handleConfirmRental()}
+          onPress={handleConfirmRental}
         />
       </S.Footer>
     </S.Container>

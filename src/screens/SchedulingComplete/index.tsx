@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useWindowDimensions, StatusBar } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
@@ -12,6 +12,7 @@ import { RouteTypesProps } from '../../routes/app.routes';
 
 const SchedulingComplete = () => {
   const { width } = useWindowDimensions();
+
 
   type RouteType = NativeStackNavigationProp<RouteTypesProps, 'Home'>;
 
@@ -32,7 +33,6 @@ const SchedulingComplete = () => {
 
       <S.Content>
         <Done width={80} height={80} />
-
         <S.Title>Carro Alugado!</S.Title>
         <S.Message>
           Agora você só precisa ir {'\n'}
@@ -40,9 +40,12 @@ const SchedulingComplete = () => {
           pegar seu automóvel.
         </S.Message>
       </S.Content>
+
+
       <S.Footer>
         <ConfirmButton title="OK" onPress={() => handleConfirm()} />
       </S.Footer>
+
     </S.Container>
   );
 };

@@ -6,3 +6,5 @@ export { default as Button } from './Button';
 export { default as Calendary } from './Calendary ';
 export { default as ConfirmButton } from './ConfirmButton';
 export { default as Load } from './Load';
+export { default as LoadAnimated } from './LoadAnimated';
+export { default as SplashAnimated } from './SplashAnimated';

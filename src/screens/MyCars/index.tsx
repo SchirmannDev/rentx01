@@ -9,7 +9,7 @@ import * as S from './styles';
 
 import BackButton from '../../components/BackButton';
 import CardCar from '../../components/CardCar';
-import Load from '../../components/Load';
+import LoadAnimated from '../../components/LoadAnimated';
 import { carDTO } from '../../dtos/carDTO';
 import api from '../../services/api';
 
@@ -57,7 +57,7 @@ const MyCars = () => {
         <S.SubTitle>Conforto, segurança e praticidade</S.SubTitle>
       </S.Header>
       {loading ? (
-        <Load />
+        <LoadAnimated />
       ) : (
         <S.Content>
           <S.Appointments>

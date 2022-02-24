@@ -10,7 +10,7 @@ import { useTheme } from 'styled-components';
 import * as S from './styles';
 
 import { Logo } from '../../assets';
-import { CardCar, Load } from '../../components';
+import { CardCar, LoadAnimated } from '../../components';
 import { carDTO } from '../../dtos/carDTO';
 import { RouteTypesProps } from '../../routes/app.routes';
 import api from '../../services/api';
@@ -55,7 +55,7 @@ const Home = () => {
         </S.HeaderContent>
       </S.Header>
       {loading ? (
-        <Load />
+        <LoadAnimated />
       ) : (
         <S.CarList
           data={cars}

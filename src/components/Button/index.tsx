@@ -7,10 +7,11 @@ import * as S from './styles';
 
 interface Props extends TouchableOpacityProps {
   title: string;
-  color: string;
+  color?: string;
   onPress: () => void;
   enabled?: boolean;
   loading?: boolean;
+  light?: boolean;
 }
 
 const Button = ({
@@ -19,6 +20,7 @@ const Button = ({
   onPress,
   enabled = true,
   loading = false,
+  light = false
 }: Props) => {
   const theme = useTheme();
   return (
@@ -32,7 +34,7 @@ const Button = ({
       {loading ? (
         <ActivityIndicator color={theme.colors.shape} />
       ) : (
-        <S.Title>{title}</S.Title>
+        <S.Title light={light}>{title}</S.Title>
       )}
     </S.Container>
   );

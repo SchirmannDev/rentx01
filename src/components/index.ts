@@ -8,3 +8,6 @@ export { default as ConfirmButton } from './ConfirmButton';
 export { default as Load } from './Load';
 export { default as LoadAnimated } from './LoadAnimated';
 export { default as SplashAnimated } from './SplashAnimated';
+export { default as Input } from './Input';
+export { default as InputPassword } from './InputPassword';
+export { default as Bullet } from './Bullet';

@@ -68,7 +68,11 @@ const SchedulingDetails = () => {
         id: car.id,
         unavailable_dates,
       })
-      .then(() => navigate('SchedulingComplete'))
+      .then(() => navigate('Confirmation', {
+        nextScreen: 'Home',
+        title: 'Carro Alugado!',
+        message: `Agora é só precisa ir\naté uma concessionaria da RENTX\npegar o seu automóvel.`,
+      }))
       .catch(() => Alert.alert('Não foi possivel confirmar o agendamento'));
   }
 

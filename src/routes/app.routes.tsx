@@ -7,26 +7,54 @@ import {
   CarDetail,
   Scheduling,
   SchedulingDetails,
-  SchedulingComplete,
+  Confirmation,
   MyCars,
-  Splash
+  Splash,
+  SignIn,
+  SignUp,
+  SignUpSecond
 } from '../screens';
 
 type RouteTypesProps = {
   Home: any;
   Scheduling: any;
   SchedulingDetails: any;
-  SchedulingComplete: any;
+  Confirmation: any;
   CardDetail: any;
   MyCars: any;
   Splash: any;
+  SignIn: any;
+  SignUp: any;
+  SignUpSecond: any;
 };
 
 const { Navigator, Screen } = createNativeStackNavigator<RouteTypesProps>();
 
 const Routes = () => {
   return (
-    <Navigator initialRouteName="Splash">
+    <Navigator initialRouteName="SignIn">
+
+      <Screen
+        options={{ headerShown: false }}
+        name='SignUp'
+        component={SignUp}
+      />
+
+      <Screen
+        options={{ headerShown: false }}
+        name='SignUpSecond'
+        component={SignUpSecond}
+      />
+
+
+
+      <Screen
+        options={{ headerShown: false }}
+        name="SignIn"
+        component={SignIn}
+      />
+
+
       <Screen
         options={{ headerShown: false }}
         name="Splash"
@@ -50,8 +78,8 @@ const Routes = () => {
       />
       <Screen
         options={{ headerShown: false }}
-        name="SchedulingComplete"
-        component={SchedulingComplete}
+        name="Confirmation"
+        component={Confirmation}
       />
 
       <Screen

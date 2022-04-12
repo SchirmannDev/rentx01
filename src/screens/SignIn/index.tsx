@@ -6,10 +6,12 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import * as Yup from 'yup';
 
 
+
 import theme from '../../styles/theme';
 import * as S from './styles';
 
 import { Button, Input, InputPassword } from "../../components";
+import { useAuth } from '../../hooks/auth';
 import { RouteTypesProps } from '../../routes/app.routes';
 
 
@@ -22,6 +24,7 @@ const SignIn = () => {
   type RouteType = NativeStackNavigationProp<RouteTypesProps, 'SignUp'>;
 
   const { navigate } = useNavigation<RouteType>();
+  const signIn = useAuth();
 
   async function handleSignIn() {
     try {
@@ -39,6 +42,8 @@ const SignIn = () => {
       }
       )
       Alert.alert('Sucesso', 'Login realizado com sucesso')
+
+      signIn({ email, password });
     } catch (error) {
       if (error instanceof Yup.ValidationError) {
         Alert.alert('DEU RUIM MANO', error.message)
@@ -97,7 +102,7 @@ const SignIn = () => {
               title="Criar conta gratuita"
               color={theme.colors.secondary}
               light
-              onPress={handleNewAccount}
+              onPress={() => handleNewAccount()}
               enabled={false}
               loading={false}
             />

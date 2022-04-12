@@ -14,9 +14,8 @@ export const Container = styled.View`
 
 export const InputContainer = styled.View<Props>`
   height: 56px;
-  width: 55px;
+  width: 50px;
   margin-right: 2px;
-  border-radius: 5px;
 
   justify-content: center;
   align-items: center;

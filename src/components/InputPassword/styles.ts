@@ -9,14 +9,14 @@ interface Props {
 
 export const Container = styled.View<Props>`
   flex-direction: row;
+  margin-bottom: ${RFValue(8)}px;
 `;
 
 export const IconContainer = styled.View<Props>`
   height: 56px;
   width: 55px;
   margin-right: 2px;
-  margin-top: 4px;
-  border-radius: 5px;
+
   justify-content: center;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.secondary};
@@ -30,7 +30,6 @@ export const IconContainer = styled.View<Props>`
 `;
 
 export const InputText = styled(TextInput)<Props>`
-  border-radius: 5px;
   flex: 1;
   color: ${({ theme }) => theme.colors.text};
   background-color: ${({ theme }) => theme.colors.secondary};

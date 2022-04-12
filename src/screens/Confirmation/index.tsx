@@ -20,13 +20,13 @@ const Confirmation = () => {
   const { width } = useWindowDimensions();
 
   const route = useRoute();
-  type RouteType = NativeStackNavigationProp<RouteTypesProps, 'Home'>;
+  type RouteType = NativeStackNavigationProp<RouteTypesProps, 'SignIn'>;
 
   const { navigate } = useNavigation<RouteType>();
   const { title, message, nextScreen } = route.params as Params;
 
   function handleConfirm() {
-    navigate(nextScreen);
+    navigate('SignIn');
   }
 
   return (
@@ -45,7 +45,7 @@ const Confirmation = () => {
       </S.Content>
 
       <S.Footer>
-        <ConfirmButton title="OK" onPress={() => handleConfirm()} />
+        <ConfirmButton title="OK" onPress={handleConfirm} />
       </S.Footer>
     </S.Container>
   );

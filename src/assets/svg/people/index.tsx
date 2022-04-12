@@ -3,6 +3,8 @@ import * as React from 'react';
 import Svg, { SvgProps, Path } from 'react-native-svg';
 
 const SvgComponent = (props: SvgProps) => (
+
+
   <Svg
     width={32}
     height={32}
@@ -15,7 +17,8 @@ const SvgComponent = (props: SvgProps) => (
       fill="#47474D"
     />
   </Svg>
-);
+)
+
 
 const MemoSvgComponent = React.memo(SvgComponent);
 export default MemoSvgComponent;

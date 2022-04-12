@@ -40,14 +40,6 @@ const Routes = () => {
         component={Home}
       />
 
-
-
-      <Screen
-        options={{ headerShown: false }}
-        name="Splash"
-        component={Splash}
-      />
-
       <Screen
         options={{ headerShown: false }}
         name="CardDetail"

@@ -7,7 +7,7 @@ export { default as Energy } from './svg/energy';
 export { default as Exchange } from './svg/exchange';
 export { default as Force } from './svg/force';
 export { default as Gasoline } from './svg/gasoline';
-export { default as Home } from './svg/home';
+export { default as HomeIcon } from './svg/home';
 export { default as Hybrid } from './svg/hybrid';
 export { default as Logo } from './svg/logo';
 export { default as LogoB } from './svg/logob';

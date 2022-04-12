@@ -15,7 +15,11 @@ import * as S from './styles';
 
 import { BackButton, Bullet, Button, InputPassword } from '../../components';
 import { RouteTypesProps } from '../../routes/app.routes';
-import Confirmation from '../Confirmation';
+import api from '../../services/api';
+
+
+
+
 
 interface Params {
   user: {
@@ -32,29 +36,44 @@ const SignUpSecond = () => {
   const theme = useTheme();
   const navigation = useNavigation();
   const route = useRoute();
-  type RouteType = NativeStackNavigationProp<RouteTypesProps, 'CardDetail'>;
+  type RouteType = NativeStackNavigationProp<RouteTypesProps, ''>;
 
   const { user } = route.params as Params;
 
   const { navigate } = useNavigation<RouteType>();
+  function handleBack() {
+    navigation.goBack();
+  }
 
   // eslint-disable-next-line consistent-return
-  function handleRegister() {
+  async function handleSignUp() {
     if (!password || !confirmPassword) {
       return Alert.alert('Erro', 'Preencha todos os campos');
     }
     if (password !== confirmPassword) {
       return Alert.alert('Erro', 'As senhas não conferem');
     }
-    navigate('Confirmation', {
-      nextScreen: 'SignIn',
-      title: `Conta criada\n com sucesso!`,
-      message: `Agora é só fazer login\ne aproveitar.`,
-    });
-  }
 
-  function handleBack() {
-    navigation.goBack();
+    await api.post('/users', {
+      name: user.name,
+      email: user.email,
+      driver_license: user.driveLicense,
+      password,
+
+    })
+      .then(() => {
+        navigate('Confirmation', {
+          nextScreen: 'SignIn',
+          title: 'Conta criada!',
+          message: `Agora é só fazer login\ne aproveitar.`,
+        });
+      })
+      .catch((error) => {
+        console.log(error)
+        Alert.alert('Erro', 'Erro ao criar conta');
+      })
+
+
   }
 
   return (
@@ -62,7 +81,7 @@ const SignUpSecond = () => {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <S.Container>
           <S.Header>
-            <BackButton onPress={handleBack} />
+            <BackButton onPress={() => handleBack()} />
             <S.Steps>
               <Bullet active />
               <Bullet />
@@ -78,12 +97,15 @@ const SignUpSecond = () => {
           <S.Form>
             <S.FormTitle>2. SENHA</S.FormTitle>
 
+
             <InputPassword
               iconName="lock"
               placeholder="Senha"
               value={password}
               onChangeText={setPassword}
             />
+
+
             <InputPassword
               iconName="lock"
               placeholder="Confirmar senha"
@@ -95,7 +117,7 @@ const SignUpSecond = () => {
           <Button
             color={theme.colors.success}
             title="Confirmar"
-            onPress={handleRegister()}
+            onPress={handleSignUp}
           />
         </S.Container>
       </TouchableWithoutFeedback>

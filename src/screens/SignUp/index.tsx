@@ -26,6 +26,7 @@ const SignUp = () => {
 
 
 
+  // eslint-disable-next-line consistent-return
   async function handleNextStep() {
     try {
 
@@ -58,7 +59,7 @@ const SignUp = () => {
         <S.Container>
           <S.Header>
             <BackButton
-              onPress={handleBack}
+              onPress={() => handleBack()}
             />
             <S.Steps>
               <Bullet active />

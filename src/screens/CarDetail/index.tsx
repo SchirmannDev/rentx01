@@ -47,8 +47,8 @@ const CarDetail = () => {
           </S.Description>
 
           <S.Rent>
-            <S.Period>{car.rent.period}</S.Period>
-            <S.Price>R$ {car.rent.price},00</S.Price>
+            <S.Period>{car.period}</S.Period>
+            <S.Price>R$ {car.price},00</S.Price>
           </S.Rent>
         </S.Details>
 

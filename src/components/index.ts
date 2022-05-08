@@ -1,0 +1,13 @@
+export { default as CardCar } from './CardCar';
+export { default as BackButton } from './BackButton';
+export { default as ImageSlider } from './ImageSlider';
+export { default as Acessory } from './Acessory';
+export { default as Button } from './Button';
+export { default as Calendary } from './Calendary ';
+export { default as ConfirmButton } from './ConfirmButton';
+export { default as Load } from './Load';
+export { default as LoadAnimated } from './LoadAnimated';
+export { default as SplashAnimated } from './SplashAnimated';
+export { default as Input } from './Input';
+export { default as InputPassword } from './InputPassword';
+export { default as Bullet } from './Bullet';
